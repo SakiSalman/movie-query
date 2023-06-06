@@ -3,7 +3,15 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 const ShowsDetails = () => {
+  const {id} = useParams()
+  const {shows} = useSelector(state => state.show)
+  const [details, setDrails] = useState([])
+useEffect(() => {
 
+const singelData = shows.filter(data => data.show.id == id)
+
+setDrails(singelData)
+}, [shows])
   return (
     <>
         <div className="allshow-wrapper py-5 d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
