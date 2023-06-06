@@ -1,43 +1,51 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import ShowCard from "../../components/showcards/ShowCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
-import { useState } from "react";
+import { showFetch } from "./showsApi";
 
 const Shows = () => {
-  const { shows, loader } = useSelector((state) => state.show);
+  const dispatch = useDispatch()
+  const {shows, loader } = useSelector((state) => state.show);
 
-  console.log(shows);
-  const [allshows, setAllshows] = useState( shows)
+  const [allshows, setAllShows] = useState([])
   // Search Movies by language
   const handleLanguageSearch = (e) => {
-    console.log(e.target.value);
+    
+    if (e.target.value == 'all') {
+        return setAllShows(shows)
+    }
     const movies = shows.filter(data =>data.show.language == `${e.target.value}`)
-     if (movies) {
-      setAllshows([...movies])
-     }
+    if (movies) {
+      setAllShows([...movies])
+    }
 
   }
-console.log(allshows);
+  useEffect(() => {
+    dispatch(showFetch())
+    .then(({payload}) => {
+     setAllShows(payload)
+    })
+  }, [])
   return (
     <>
       {loader && <Loader />}
 
-      {!loader && (
+      {!loader  && allshows && (
         <div className="allshow-wrapper " style={{ height: "90vh" }}>
           <div className="container py-5">
             <div className="row">
               <div className="col-12 d-flex justify-content-evenly align-items-center">
                 <div className="search-area">
-                  <form class="d-flex">
+                  <form className="d-flex">
                     <input
-                      class="form-control me-2"
+                    onChange={handleSearch}
+                      className="form-control me-2"
                       type="search"
                       placeholder="Search"
                       aria-label="Search"
                     />
-                    <button class="btn btn-primary" type="submit">
+                    <button className="btn btn-primary" type="submit">
                       Search
                     </button>
                   </form>
@@ -45,14 +53,17 @@ console.log(allshows);
                 <h2 className="text-center">All Shows</h2>
                 <div className="language-search">
                   <label htmlFor="#">Search By Language</label>
-                  <select
-                  onChange={handleLanguageSearch}
-                    class="form-select"
-                    aria-label="Default select example"
-                  >
-                    <option value="English">English</option>
-                    <option value="Korean">Korean</option>{" "}
-                  </select>
+                 
+                    <select
+                   onChange={(e) => handleLanguageSearch(e)}
+                     className="form-select"
+                     aria-label="Default select example"
+                   >
+                     <option value="all">All Language</option>
+                     <option value="English">English</option>
+                     <option value="Korean">Korean</option>{" "}
+                   </select>
+                 
                 </div>
               </div>
             </div>

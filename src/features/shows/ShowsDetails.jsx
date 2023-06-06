@@ -57,7 +57,7 @@ const ShowsDetails = () => {
 
                       <div className="row">
                         <div className="col">
-                        <table class="table">
+                        <table className="table">
   <thead>
     <tr>
       <th scope="col">#</th>

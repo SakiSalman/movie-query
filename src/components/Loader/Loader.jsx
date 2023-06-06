@@ -10,7 +10,7 @@ const Loader = () => {
         color="#0d6efd"
         ariaLabel="circles-loading"
         wrapperStyle={{}}
-        wrapperClass=""
+        wrapperclassName=""
         visible={true}
       />
       <div className="div">
