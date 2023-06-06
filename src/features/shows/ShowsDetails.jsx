@@ -31,9 +31,9 @@ const ShowsDetails = () => {
           <div className="card p-md-5 mx-auto">
             <div className="card-body">
               <div className="row">
-                <div className="col-md-5">
+                <div className="col-md-5" data-aos={"fade-left"} data-aos-easing="ease-in-sine">
                   <div className="row">
-                    <div className="col">
+                    <div className="col ">
                       <img
                         style={{
                           width: "100%",
@@ -46,7 +46,7 @@ const ShowsDetails = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-7">
+                <div className="col-md-7" data-aos={"fade-left"} data-aos-easing="ease-in-sine">
                   <div className="row">
                     <div className="col">
                       <h3>{details?.name}</h3>

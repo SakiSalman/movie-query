@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const ShowCard = ({data}) => {
     const navigate = useNavigate()
+      
   return (
     <>
       <div className="card">

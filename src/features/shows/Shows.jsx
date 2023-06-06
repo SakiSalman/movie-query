@@ -75,12 +75,21 @@ const Shows = () => {
             <div className="row py-5">
               {allshows &&
                 allshows.map((data, index) => {
+
+
+                  const data_aos = ["fade-up",
+                  "fade-down",
+                  "fade-left",
+                  "fade-right"]
+            
+                                 
                   return (
                     <div
                       className="col-12 col-md-3 col-sm-12 my-3"
                       key={index}
-                    >
-                      <ShowCard data={data.show} />
+                      data-aos={ data_aos[index % data_aos.length]} data-aos-easing="ease-in-sine" >
+                      <ShowCard data={data.show}  />
+                      
                     </div>
                   );
                 })}
