@@ -36,7 +36,6 @@ const Shows = () => {
   return (
     <>
       {loader && <Loader />}
-
       {!loader  && allshows && (
         <div className="allshow-wrapper " style={{ height: "90vh" }}>
           <div className="container py-5">
@@ -79,7 +78,7 @@ const Shows = () => {
                   return (
                     <div
                       className="col-12 col-md-3 col-sm-12 my-3"
-                      key={data.id}
+                      key={index}
                     >
                       <ShowCard data={data.show} />
                     </div>

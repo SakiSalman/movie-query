@@ -1,3 +1,4 @@
+import { Rating } from "@smastrom/react-rating";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -14,12 +15,13 @@ const ShowCard = ({data}) => {
         <div className="card-body">
           <h5 className="card-title">{data.name}</h5>
           <div className="row">
-            <div className="col-md-6">
-              <p>Premwired : {data.premiered}</p>
+          <div className="col-12 d-flex">
+              <p>Rattings :</p>
+              <div>{data?.rating?.average ? <Rating style={{ maxWidth: 100 }} value={parseInt((data?.rating?.average/10)*5)}
+                                     readOnly
+                                     /> : 'No Rattings' }</div>
             </div>
-            <div className="col-md-6">
-              <p>Rattings : {data.rating.average} Star</p>
-            </div>
+           
           </div>
         </div>
         <div className="card-footer">

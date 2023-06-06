@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 import Form from "../../components/Form/Form";
 import parse from "html-react-parser";
+import { Rating } from '@smastrom/react-rating'
+
 const ShowsDetails = () => {
   const { id } = useParams();
   const { shows } = useSelector((state) => state.show);
@@ -13,6 +15,7 @@ const ShowsDetails = () => {
     const singelData = shows.find((data) => data.show.id == id);
     if (singelData) setDrails(singelData.show);
   }, [shows]);
+
   return (
     <>
       <div
@@ -48,51 +51,42 @@ const ShowsDetails = () => {
                     <div className="col">
                       <h3>{details?.name}</h3>
                       {parse(`${details?.summary}`)}
-                      <button 
-                      
-                        onClick={() => setShowModal(!showModal)}
-                      className="btn btn-primary btn-lg">
-                        Buy Ticket
-                      </button>
 
-                      <div className="row">
+                      <div className="row py-2">
                         <div className="col">
-                        <table className="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+                          <table className="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">type</th>
+                                <th scope="col">{details?.type}</th>
+                              </tr>
+                              <tr>
+                                <th scope="col">
+                                  Language</th>
+                                <th scope="col">{details?.type}</th>
+                              </tr>
+                              <tr>
+                                <th scope="col">Rating</th>
+                                <th scope="col">{details?.rating?.average ? <Rating style={{ maxWidth: 100 }} value={parseInt((details?.rating?.average/10)*5)}
+                                     readOnly
+                                     /> : 'No Rattings' }</th>
+                              </tr>
+                              
+                            </thead>
+                            
+                          </table>
                         </div>
                       </div>
+                      <button
+                        onClick={() => setShowModal(!showModal)}
+                        className="btn btn-primary btn-lg"
+                      >
+                        Buy Ticket
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-             
             </div>
           </div>
         </div>
@@ -101,7 +95,11 @@ const ShowsDetails = () => {
       {/* Dynamic Modal */}
       {showModal && (
         <Modal setModal={setShowModal} modal={showModal}>
-          <Form setModal={setShowModal} modal={showModal} movie={details?.name} />
+          <Form
+            setModal={setShowModal}
+            modal={showModal}
+            movie={details?.name}
+          />
         </Modal>
       )}
     </>
