@@ -8,8 +8,7 @@ const ShowCard = ({data}) => {
       <div className="card">
         <img
           style={{ width: "100%", height: "250px", objectFit: "cover" }}
-          src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-          className="card-img-top"
+          src={data?.image?.original}
           alt="..."
         />
         <div className="card-body">

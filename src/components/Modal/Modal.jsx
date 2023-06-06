@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Modal = ({children}) => {
+const Modal = ({children, modal, setModal}) => {
   return (
     <div className='modal-wrapper'>
         
@@ -8,7 +8,9 @@ const Modal = ({children}) => {
             <div className="container">
                 <div className="card">
                    <div className="close-btn-wrap">
-                   <span className='close-btn'>X</span>
+                   <span className='close-btn' onClick={() => {
+                    setModal(!modal)
+                   }}>X</span>
                    </div>
                     <div className="card-body">
                         {children}

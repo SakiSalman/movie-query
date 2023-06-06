@@ -3,16 +3,15 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 import Form from "../../components/Form/Form";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 const ShowsDetails = () => {
   const { id } = useParams();
   const { shows } = useSelector((state) => state.show);
   const [details, setDrails] = useState({});
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     const singelData = shows.find((data) => data.show.id == id);
-
-    if (singelData) setDrails(singelData.show)
+    if (singelData) setDrails(singelData.show);
   }, [shows]);
   return (
     <>
@@ -32,8 +31,12 @@ const ShowsDetails = () => {
                 <div className="col-md-5">
                   <div className="row">
                     <div className="col">
-                      <img 
-                      style={{ width: "100%", height: "90%", objectFit: "cover" }}
+                      <img
+                        style={{
+                          width: "100%",
+                          height: "90%",
+                          objectFit: "cover",
+                        }}
                         src={details?.image?.original}
                         alt=""
                       />
@@ -43,12 +46,12 @@ const ShowsDetails = () => {
                 <div className="col-md-7">
                   <div className="row">
                     <div className="col">
-                    <h3>{details?.name}</h3>
-                      {
-                        parse(`${details?.summary}`
-                        )
-                      }
-                      <button className="btn btn-primary btn-lg">
+                      <h3>{details?.name}</h3>
+                      {parse(`${details?.summary}`)}
+                      <button 
+                      
+                        onClick={() => setShowModal(!showModal)}
+                      className="btn btn-primary btn-lg">
                         Buy Ticket
                       </button>
                     </div>
@@ -59,12 +62,13 @@ const ShowsDetails = () => {
           </div>
         </div>
       </div>
-      {
-        showModal && <Modal setShowModal={setShowModal} modal={showModal}>
-        <Form  movie={details?.name}/>
-      </Modal>
-      }
-      
+
+      {/* Dynamic Modal */}
+      {showModal && (
+        <Modal setModal={setShowModal} modal={showModal}>
+          <Form setModal={setShowModal} modal={showModal} movie={details?.name} />
+        </Modal>
+      )}
     </>
   );
 };

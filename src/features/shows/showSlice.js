@@ -8,7 +8,8 @@ export const showSlice = createSlice({
         shows : [],
         error : null,
         status : 'idle',
-        message : null
+        message : null,
+        loader : false
     },
     reducers : {},
     extraReducers : (builder) => {
@@ -16,12 +17,14 @@ export const showSlice = createSlice({
         .addCase(showFetch.pending, (state, {type, payload})=> {
             return {
                 ...state,
-                status : 'loading'
+                status : 'loading',
+                loader : true
             }
         })
         
         .addCase(showFetch.fulfilled, (state, {type, payload})=> {
           state.shows = payload
+          state.loader = false
         })
         
     }
