@@ -25,7 +25,7 @@ const ShowsDetails = () => {
               <h3 className="text-center">Show Details</h3>
             </div>
           </div>
-          <div className="card p-5 mx-auto">
+          <div className="card p-md-5 mx-auto">
             <div className="card-body">
               <div className="row">
                 <div className="col-md-5">
