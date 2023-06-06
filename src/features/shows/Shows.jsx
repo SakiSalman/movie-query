@@ -21,6 +21,12 @@ const Shows = () => {
     }
 
   }
+  // Search by type (Realtime search)
+  const handleSearch = (e) => {
+    const movies = shows.filter(data => data.show.name.toLowerCase().includes(e.target.value)
+    ) 
+    setAllShows(movies);
+  }
   useEffect(() => {
     dispatch(showFetch())
     .then(({payload}) => {
