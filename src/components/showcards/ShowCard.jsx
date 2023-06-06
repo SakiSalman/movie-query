@@ -5,15 +5,15 @@ const ShowCard = ({data}) => {
     const navigate = useNavigate()
   return (
     <>
-      <div class="card">
+      <div className="card">
         <img
           style={{ width: "100%", height: "250px", objectFit: "cover" }}
           src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-          class="card-img-top"
+          className="card-img-top"
           alt="..."
         />
-        <div class="card-body">
-          <h5 class="card-title">{data.name}</h5>
+        <div className="card-body">
+          <h5 className="card-title">{data.name}</h5>
           <div className="row">
             <div className="col-md-6">
               <p>Premwired : {data.premiered}</p>

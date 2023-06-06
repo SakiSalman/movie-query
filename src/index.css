@@ -1,0 +1,41 @@
+.modal-wrapper{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.398);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-inner{
+    width: 40%;
+}
+.close-btn-wrap{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.close-btn{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: rgb(159, 159, 159);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Responsive css */
+
+@media (max-width: 650px) { 
+    .modal-inner{
+        width: 95%;
+    }
+
+ }
