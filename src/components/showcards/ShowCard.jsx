@@ -1,7 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ShowCard = ({data}) => {
-
+    const navigate = useNavigate()
   return (
     <>
       <div class="card">
@@ -23,7 +24,7 @@ const ShowCard = ({data}) => {
           </div>
         </div>
         <div className="card-footer">
-          <button className="btn btn-primary">View Details</button>
+          <button className="btn btn-primary" onClick={() => navigate(`/${data.id}`)}>View Details</button>
         </div>
       </div>
     </>

@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { showFetch } from "./showsApi";
+import React from "react";
+
 import ShowCard from "../../components/showcards/ShowCard";
+import { useSelector } from "react-redux";
 
 const Shows = () => {
-  const [shows, setShows] = useState([]);
-  const dispatch = useDispatch();
-    console.log(shows);
-  // fetch all data
-  useEffect(() => {
-    dispatch(showFetch()).then(({ payload }) => {
-      setShows(payload);
-    });
-  }, [dispatch]);
+  const {shows} = useSelector(state => state.show)
+
+
   return (
     <>
       <div className="allshow-wrapper " style={{ height: "90vh" }}>
@@ -26,7 +20,7 @@ const Shows = () => {
             {shows &&
               shows.map((data, index) => {
                 return (
-                  <div className="col-12 col-md-3 col-sm-12 my-3">
+                  <div className="col-12 col-md-3 col-sm-12 my-3" key={data.id}>
                     <ShowCard data={data.show}/>
                   </div>
                 );
